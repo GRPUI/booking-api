@@ -19,7 +19,7 @@ JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 async def get_tickets(
         connection: Connection,
         token: str
-) -> HTTPException | str:
+) -> str:
     tickets = await connection.fetchrow(
         """SELECT * FROM tickets WHERE hash = $1;""",
         token
@@ -31,7 +31,7 @@ async def get_tickets(
     )
 
     if tickets is None:
-        return HTTPException(status_code=404, detail="Билет не найден")
+        raise HTTPException(status_code=404, detail="Билет не найден")
 
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader('templates/'),

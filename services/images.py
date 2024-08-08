@@ -7,13 +7,13 @@ from fastapi.exceptions import HTTPException
 async def get_ticket_image(
         connection: Connection,
         token: str
-):
+) -> str:
     ticket = await connection.fetchrow(
         """SELECT * FROM tickets WHERE hash = $1;""",
         token
     )
     if ticket is None:
-        return HTTPException(status_code=404, detail="Билет не найден")
+        raise HTTPException(status_code=404, detail="Билет не найден")
 
     table_id, sit_id, price = ticket['table_id'], ticket['sit_id'], ticket['price']
 
