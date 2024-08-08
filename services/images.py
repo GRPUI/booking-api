@@ -28,7 +28,7 @@ async def get_ticket_image(
         table_id=table_id,
         sit_id=sit_id,
         price=price,
-        image=f"https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=ticket.pcost.tech/ticket/{token}"
+        image=f"https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=ticket.pcost.tech/ticket/?h={token}"
     )
 
     return html
