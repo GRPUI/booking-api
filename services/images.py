@@ -18,7 +18,7 @@ async def get_ticket_image(
     table_id, sit_id, price = ticket['table_id'], ticket['sit_id'], ticket['price']
 
     env = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('templates/'),
+        loader=jinja2.FileSystemLoader('app/templates/'),
         comment_start_string='{=',
         comment_end_string='=}',
     )

@@ -34,7 +34,7 @@ async def get_tickets(
         raise HTTPException(status_code=404, detail="Билет не найден")
 
     env = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('templates/'),
+        loader=jinja2.FileSystemLoader('app/templates/'),
         comment_start_string='{=',
         comment_end_string='=}',
     )
