@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Используем современный шрифт */
+            background-color: #f4f4f4; /* Устанавливаем светлый фон */
+            color: #333; /* Устанавливаем темный цвет текста */
+            line-height: 1.6; /* Устанавливаем высоту строки */
+            padding: 20px; /* Добавляем отступы вокруг текста */
+            text-align: center; /* Выравниваем текст по центру */
+            font-size: 5em; /* Устанавливаем очень большой размер шрифта */
+        }
+
+        h1 {
+            color: #666; /* Устанавливаем цвет заголовка */
+        }
+
+        p {
+            margin-bottom: 20px; /* Добавляем отступ после каждого параграфа */
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                font-size: 3em; /* Уменьшаем размер шрифта для экранов меньше 600px */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Result</h1>
+    <p>Раз отсканировано: {{scans}}</p>
+    <p>Номер стола: {{table_id}}</p>
+    <p>Номер места: {{sit_id}}</p>
+    <p>Цена: {{price}}</p>
+
+</body>
+</html>
