@@ -66,12 +66,11 @@ async def decode_ticket(
         encoded
     )
 
-    if existed_ticket is not None:
-        return encoded
+    if existed_ticket is None:
+        await connection.execute(
+            """INSERT INTO tickets (table_id, sit_id, price, hash)
+            VALUES ($1, $2, $3, $4);""",
+            ticket.table_id, ticket.sit_id, ticket.price, encoded
+        )
 
-    await connection.execute(
-        """INSERT INTO tickets (table_id, sit_id, price, hash)
-        VALUES ($1, $2, $3, $4);""",
-        ticket.table_id, ticket.sit_id, ticket.price, encoded
-    )
-    return encoded
+    return f"ticket.pcost.tech/image/{encoded}"
