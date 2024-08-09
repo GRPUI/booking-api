@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends
 
 from services import tickets
 
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 
 from deps import DatabaseConnectionMarker
 from models.ticket import AddTicketModel
@@ -24,6 +24,6 @@ async def root(
 async def add_ticket(
     ticket: AddTicketModel,
     connection: Connection = Depends(DatabaseConnectionMarker)
-) -> RedirectResponse:
-    result = await tickets.decode_ticket(connection, ticket)
-    return RedirectResponse(result)
+) -> str:
+    return await tickets.decode_ticket(connection, ticket)
+
